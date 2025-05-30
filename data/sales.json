@@ -85,5 +85,16 @@
         "precio_total": 20
       }
     ]
+  },
+  {
+    "nombre_cliente": "Maia",
+    "fecha_venta": "2025-06-25",
+    "detalles": [
+      {
+        "nombre_producto": "Banana",
+        "cantidad_vendida": 255,
+        "precio_total": 1275
+      }
+    ]
   }
 ]
