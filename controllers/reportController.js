@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { generateCSV, generatePDF } = require("../utils/exportHelpers");
 
 const salesPath = path.join(__dirname, "../data/sales.json");
 const inventoryPath = path.join(__dirname, "../data/inventory.json");
@@ -134,9 +135,34 @@ function totalIncome() {
   }, 0);
 }
 
+// Función para exportar CSV o PDF de top productos
+function exportTopProducts(req, res) {
+  const format = req.query.format || "csv";
+  const data = topSellingProducts(10);
+  const columns = ["nombre_producto", "cantidad"];
+
+  if (format === "pdf") {
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=top-products.pdf"
+    );
+    res.setHeader("Content-Type", "application/pdf");
+    generatePDF(data, columns, res);
+  } else {
+    const csv = generateCSV(data, columns);
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=top-products.csv"
+    );
+    res.setHeader("Content-Type", "text/csv");
+    res.send(csv);
+  }
+}
+
 module.exports = {
   salesSummary,
   topSellingProducts,
   lowStockProducts,
   totalIncome,
+  exportTopProducts,
 };

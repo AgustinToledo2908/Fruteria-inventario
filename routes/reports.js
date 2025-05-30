@@ -6,6 +6,7 @@ const {
   topSellingProducts,
   lowStockProducts,
   totalIncome,
+  exportTopProducts,
 } = require("../controllers/reportController");
 
 router.get("/sales-summary", (req, res) => {
@@ -35,5 +36,7 @@ router.get("/total-income", (req, res) => {
   const total = totalIncome();
   res.json({ totalIngresos: total });
 });
+
+router.get("/export-top-products", exportTopProducts);
 
 module.exports = router;
