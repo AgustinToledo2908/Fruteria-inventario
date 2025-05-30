@@ -50,5 +50,28 @@ function addProduct(req, res) {
     .status(201)
     .json({ message: "Producto agregado correctamente", product: newProduct });
 }
+const deleteProduct = (req, res) => {
+  const productName = req.params.name.toLowerCase();
 
-module.exports = { addProduct };
+  try {
+    let inventory = JSON.parse(fs.readFileSync(inventoryFile, "utf-8"));
+
+    const index = inventory.findIndex(
+      (item) => item.nombre_producto.toLowerCase() === productName
+    );
+
+    if (index === -1) {
+      return res.status(404).json({ message: "Producto no encontrado." });
+    }
+
+    inventory.splice(index, 1);
+
+    fs.writeFileSync(inventoryFile, JSON.stringify(inventory, null, 2));
+    res.json({ message: "Producto eliminado correctamente." });
+  } catch (error) {
+    console.error("Error al eliminar producto:", error);
+    res.status(500).json({ message: "Error interno del servidor." });
+  }
+};
+
+module.exports = { addProduct, deleteProduct };

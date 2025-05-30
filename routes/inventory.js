@@ -6,7 +6,10 @@ const inventoryPath = path.join(__dirname, "../data/inventory.json");
 const express = require("express");
 const router = express.Router();
 
-const { addProduct } = require("../controllers/inventoryController");
+const {
+  addProduct,
+  deleteProduct,
+} = require("../controllers/inventoryController");
 
 router.get("/", (req, res) => {
   res.json({ message: "Inventario funcionando" });
@@ -45,5 +48,6 @@ router.put("/:name", (req, res) => {
     res.status(500).json({ message: "Error interno del servidor." });
   }
 });
+router.delete("/:name", deleteProduct);
 
 module.exports = router;
