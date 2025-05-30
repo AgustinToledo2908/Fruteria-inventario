@@ -9,6 +9,7 @@ const router = express.Router();
 const {
   addProduct,
   deleteProduct,
+  registerSale,
 } = require("../controllers/inventoryController");
 
 router.get("/", (req, res) => {
@@ -49,5 +50,6 @@ router.put("/:name", (req, res) => {
   }
 });
 router.delete("/:name", deleteProduct);
+router.post("/sales", registerSale);
 
 module.exports = router;

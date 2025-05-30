@@ -1,0 +1,18 @@
+[
+  {
+    "nombre_cliente": "Juan Pérez",
+    "fecha_venta": "2025-05-29",
+    "detalles": [
+      {
+        "nombre_producto": "Manzana",
+        "cantidad_vendida": 2,
+        "precio_total": 5
+      },
+      {
+        "nombre_producto": "Banana",
+        "cantidad_vendida": 1,
+        "precio_total": 5
+      }
+    ]
+  }
+]
