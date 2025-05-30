@@ -11,10 +11,17 @@ const {
 
 const inventoryPath = path.join(__dirname, "../data/inventory.json");
 
-router.get("/", (req, res) => {
-  res.json({ message: "Inventario funcionando" });
-});
+const { readFile } = require("../controllers/fileUtils");
 
+router.get("/", (req, res) => {
+  try {
+    const inventory = readFile(inventoryPath);
+    res.json(inventory);
+  } catch (err) {
+    console.error("Error al leer inventario:", err);
+    res.status(500).json({ message: "Error al obtener inventario" });
+  }
+});
 router.post("/", addProduct);
 
 router.put("/:name", (req, res) => {

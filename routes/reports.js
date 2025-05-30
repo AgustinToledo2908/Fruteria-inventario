@@ -36,6 +36,7 @@ router.get("/total-income", (req, res) => {
   const total = totalIncome();
   res.json({ totalIngresos: total });
 });
+console.log("typeof exportTopProducts:", typeof exportTopProducts);
 
 router.get("/export-top-products", exportTopProducts);
 
