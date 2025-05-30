@@ -10,11 +10,5 @@
     "cantidad_stock": 48,
     "precio_venta": 2.5,
     "fecha_vencimiento": "2024-10-15"
-  },
-  {
-    "nombre_producto": "Tomate",
-    "cantidad_stock": 2,
-    "precio_venta": 10,
-    "fecha_vencimiento": "2025-08-29"
   }
 ]

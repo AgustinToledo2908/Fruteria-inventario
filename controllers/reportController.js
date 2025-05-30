@@ -135,7 +135,6 @@ function totalIncome() {
   }, 0);
 }
 
-// Función para exportar CSV o PDF de top productos
 function exportTopProducts(req, res) {
   const format = req.query.format || "csv";
   const data = topSellingProducts(10);
