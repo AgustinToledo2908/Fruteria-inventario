@@ -96,5 +96,38 @@
         "precio_total": 1275
       }
     ]
+  },
+  {
+    "nombre_cliente": "Cliente Test",
+    "fecha_venta": "2024-05-01",
+    "detalles": [
+      {
+        "nombre_producto": "TestVenta",
+        "cantidad_vendida": 5,
+        "precio_total": 7.5
+      }
+    ]
+  },
+  {
+    "nombre_cliente": "Cliente Test",
+    "fecha_venta": "2024-05-01",
+    "detalles": [
+      {
+        "nombre_producto": "TestVenta",
+        "cantidad_vendida": 5,
+        "precio_total": 7.5
+      }
+    ]
+  },
+  {
+    "nombre_cliente": "Cliente Test",
+    "fecha_venta": "2024-05-01",
+    "detalles": [
+      {
+        "nombre_producto": "TestVenta",
+        "cantidad_vendida": 5,
+        "precio_total": 7.5
+      }
+    ]
   }
 ]

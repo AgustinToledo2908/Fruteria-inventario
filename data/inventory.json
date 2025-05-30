@@ -12,15 +12,21 @@
     "fecha_vencimiento": "2024-10-15"
   },
   {
-    "nombre_producto": "Sandia",
-    "cantidad_stock": 2,
-    "precio_venta": 25,
-    "fecha_vencimiento": "2025-08-27"
-  },
-  {
     "nombre_producto": "Uvas",
     "cantidad_stock": 4,
     "precio_venta": 25,
     "fecha_vencimiento": "2025-07-27"
+  },
+  {
+    "nombre_producto": "Kiwi",
+    "cantidad_stock": 10,
+    "precio_venta": 2.5,
+    "fecha_vencimiento": null
+  },
+  {
+    "nombre_producto": "TestVenta",
+    "cantidad_stock": 5,
+    "precio_venta": 1.5,
+    "fecha_vencimiento": null
   }
 ]
