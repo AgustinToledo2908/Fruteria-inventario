@@ -1,9 +1,6 @@
+const express = require("express");
 const fs = require("fs");
 const path = require("path");
-
-const inventoryPath = path.join(__dirname, "../data/inventory.json");
-
-const express = require("express");
 const router = express.Router();
 
 const {
@@ -12,11 +9,14 @@ const {
   registerSale,
 } = require("../controllers/inventoryController");
 
+const inventoryPath = path.join(__dirname, "../data/inventory.json");
+
 router.get("/", (req, res) => {
   res.json({ message: "Inventario funcionando" });
 });
 
 router.post("/", addProduct);
+
 router.put("/:name", (req, res) => {
   const productName = req.params.name.toLowerCase();
   const { cantidad_stock, precio_venta, fecha_vencimiento } = req.body;
@@ -49,7 +49,9 @@ router.put("/:name", (req, res) => {
     res.status(500).json({ message: "Error interno del servidor." });
   }
 });
+
 router.delete("/:name", deleteProduct);
+
 router.post("/sales", registerSale);
 
 module.exports = router;

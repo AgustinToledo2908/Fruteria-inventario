@@ -1,20 +1,8 @@
-const fs = require("fs");
 const path = require("path");
+const { readFile, writeFile } = require("./fileUtils");
 
 const inventoryFile = path.join(__dirname, "../data/inventory.json");
-
-function readInventory() {
-  try {
-    const data = fs.readFileSync(inventoryFile, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    return [];
-  }
-}
-
-function writeInventory(inventory) {
-  fs.writeFileSync(inventoryFile, JSON.stringify(inventory, null, 2));
-}
+const salesFile = path.join(__dirname, "../data/sales.json");
 
 function addProduct(req, res) {
   const { nombre_producto, cantidad_stock, precio_venta, fecha_vencimiento } =
@@ -24,12 +12,13 @@ function addProduct(req, res) {
     return res.status(400).json({ error: "Faltan datos obligatorios" });
   }
 
-  const inventory = readInventory();
+  const inventory = readFile(inventoryFile);
 
   const existingProduct = inventory.find(
     (item) =>
       item.nombre_producto.toLowerCase() === nombre_producto.toLowerCase()
   );
+
   if (existingProduct) {
     return res
       .status(400)
@@ -44,17 +33,18 @@ function addProduct(req, res) {
   };
 
   inventory.push(newProduct);
-  writeInventory(inventory);
+  writeFile(inventoryFile, inventory);
 
   res
     .status(201)
     .json({ message: "Producto agregado correctamente", product: newProduct });
 }
-const deleteProduct = (req, res) => {
+
+function deleteProduct(req, res) {
   const productName = req.params.name.toLowerCase();
 
   try {
-    let inventory = JSON.parse(fs.readFileSync(inventoryFile, "utf-8"));
+    let inventory = readFile(inventoryFile);
 
     const index = inventory.findIndex(
       (item) => item.nombre_producto.toLowerCase() === productName
@@ -65,27 +55,13 @@ const deleteProduct = (req, res) => {
     }
 
     inventory.splice(index, 1);
+    writeFile(inventoryFile, inventory);
 
-    fs.writeFileSync(inventoryFile, JSON.stringify(inventory, null, 2));
     res.json({ message: "Producto eliminado correctamente." });
   } catch (error) {
     console.error("Error al eliminar producto:", error);
     res.status(500).json({ message: "Error interno del servidor." });
   }
-};
-const salesFile = path.join(__dirname, "../data/sales.json");
-
-function readSales() {
-  try {
-    const data = fs.readFileSync(salesFile, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
-
-function writeSales(sales) {
-  fs.writeFileSync(salesFile, JSON.stringify(sales, null, 2));
 }
 
 function registerSale(req, res) {
@@ -98,19 +74,21 @@ function registerSale(req, res) {
   }
 
   try {
-    let inventory = readInventory();
-    let sales = readSales();
+    let inventory = readFile(inventoryFile);
+    let sales = readFile(salesFile);
 
     for (const item of detalles) {
       const product = inventory.find(
         (p) =>
           p.nombre_producto.toLowerCase() === item.nombre_producto.toLowerCase()
       );
+
       if (!product) {
         return res
           .status(400)
           .json({ error: `Producto ${item.nombre_producto} no existe` });
       }
+
       if (item.cantidad_vendida > product.cantidad_stock) {
         return res
           .status(400)
@@ -126,11 +104,11 @@ function registerSale(req, res) {
       product.cantidad_stock -= item.cantidad_vendida;
     }
 
-    writeInventory(inventory);
+    writeFile(inventoryFile, inventory);
 
     const newSale = { nombre_cliente, fecha_venta, detalles };
     sales.push(newSale);
-    writeSales(sales);
+    writeFile(salesFile, sales);
 
     res
       .status(201)
