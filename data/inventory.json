@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "nombre_producto": "Melón",
+    "cantidad_stock": 10,
+    "precio_venta": 3.5,
+    "fecha_vencimiento": "2024-10-01"
+  }
+]
