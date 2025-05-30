@@ -74,5 +74,16 @@
         "precio_total": 30000
       }
     ]
+  },
+  {
+    "nombre_cliente": "juan ",
+    "fecha_venta": "2026-06-25",
+    "detalles": [
+      {
+        "nombre_producto": "Tomate",
+        "cantidad_vendida": 2,
+        "precio_total": 20
+      }
+    ]
   }
 ]
