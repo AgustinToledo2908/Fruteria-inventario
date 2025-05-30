@@ -14,5 +14,65 @@
         "precio_total": 5
       }
     ]
+  },
+  {
+    "id_venta": 1,
+    "fecha_venta": "2025-05-25T10:30:00.000Z",
+    "detalles": [
+      {
+        "nombre_producto": "Remera Blanca",
+        "cantidad_vendida": 2,
+        "precio_unitario": 5000,
+        "precio_total": 10000
+      },
+      {
+        "nombre_producto": "Jean Azul",
+        "cantidad_vendida": 1,
+        "precio_unitario": 15000,
+        "precio_total": 15000
+      }
+    ]
+  },
+  {
+    "id_venta": 2,
+    "fecha_venta": "2025-05-26T15:45:00.000Z",
+    "detalles": [
+      {
+        "nombre_producto": "Campera Negra",
+        "cantidad_vendida": 1,
+        "precio_unitario": 25000,
+        "precio_total": 25000
+      },
+      {
+        "nombre_producto": "Remera Blanca",
+        "cantidad_vendida": 1,
+        "precio_unitario": 5000,
+        "precio_total": 5000
+      }
+    ]
+  },
+  {
+    "id_venta": 3,
+    "fecha_venta": "2025-05-27T19:20:00.000Z",
+    "detalles": [
+      {
+        "nombre_producto": "Remera Blanca",
+        "cantidad_vendida": 3,
+        "precio_unitario": 5000,
+        "precio_total": 15000
+      }
+    ]
+  },
+  {
+    "id_venta": 4,
+    "fecha_venta": "2025-05-15T13:00:00.000Z",
+    "detalles": [
+      {
+        "nombre_producto": "Jean Azul",
+        "cantidad_vendida": 2,
+        "precio_unitario": 15000,
+        "precio_total": 30000
+      }
+    ]
   }
 ]
