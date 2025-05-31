@@ -1,6 +1,6 @@
 .inventory-container {
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -50,22 +50,22 @@ button:hover {
   opacity: 0.85;
 }
 
-button:nth-child(1) {
+.edit-button {
   background-color: #1976d2;
   color: white;
 }
 
-button:nth-child(2) {
+.delete-button {
   background-color: #e53935;
   color: white;
 }
 
-button:nth-child(3) {
+.save-button {
   background-color: #43a047;
   color: white;
 }
 
-button:nth-child(4) {
+.cancel-button {
   background-color: #757575;
   color: white;
 }

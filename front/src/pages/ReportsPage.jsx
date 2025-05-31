@@ -96,55 +96,69 @@ const ReportsPage = () => {
       <div className="report-grid">
         <div className="report-card">
           <h3>Resumen de Ventas</h3>
-          <ul>
-            {summary.map((item, i) => (
-              <li key={i}>
-                Fecha: {item.fecha} - Ventas: {item.totalVentas} - Ingresos: ${" "}
-                {item.totalIngreso.toFixed(2)}
-              </li>
-            ))}
-          </ul>
-          <button
-            className="export-button"
-            onClick={() => handleExport(SALES_SUMMARY)}
-          >
-            Exportar CSV
-          </button>
+          <div className="report-card-content">
+            <ul>
+              {summary.map((item, i) => (
+                <li key={i}>
+                  <div>
+                    <span>Fecha: {item.fecha} - </span>
+                    <span>Ventas {item.totalVentas} - </span>
+                    <span>Ingresos: ${item.totalIngreso.toFixed(2)}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <button
+              className="export-button"
+              onClick={() => handleExport(SALES_SUMMARY)}
+            >
+              Exportar CSV
+            </button>
+          </div>
         </div>
 
         <div className="report-card">
           <h3>Productos Más Vendidos</h3>
-          <ul>
-            {topProducts.map((prod, i) => (
-              <li key={i}>
-                {prod.nombre_producto} - {prod.totalVendido || prod.cantidad}{" "}
-                vendidos
-              </li>
-            ))}
-          </ul>
-          <button
-            className="export-button"
-            onClick={() => handleExport(TOP_PRODUCTS)}
-          >
-            Exportar CSV
-          </button>
+          <div className="report-card-content">
+            <ul>
+              {topProducts.map((prod, i) => (
+                <li key={i}>
+                  <div>
+                    <span>{prod.nombre_producto} - </span>
+                    <span>{prod.totalVendido ?? prod.cantidad} vendidos</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <button
+              className="export-button"
+              onClick={() => handleExport(TOP_PRODUCTS)}
+            >
+              Exportar CSV
+            </button>
+          </div>
         </div>
 
         <div className="report-card">
           <h3>Productos con Bajo Stock</h3>
-          <ul>
-            {lowStock.map((prod, i) => (
-              <li key={i}>
-                {prod.nombre_producto} - Stock: {prod.cantidad}
-              </li>
-            ))}
-          </ul>
-          <button
-            className="export-button"
-            onClick={() => handleExport(LOW_STOCK_PRODUCTS)}
-          >
-            Exportar CSV
-          </button>
+          <div className="report-card-content">
+            <ul>
+              {lowStock.map((prod, i) => (
+                <li key={i}>
+                  <div>
+                    <span>{prod.nombre_producto} - </span>
+                    <span>Stock: {prod.cantidad}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <button
+              className="export-button"
+              onClick={() => handleExport(LOW_STOCK_PRODUCTS)}
+            >
+              Exportar CSV
+            </button>
+          </div>
         </div>
 
         <div className="total-ingresos-card">

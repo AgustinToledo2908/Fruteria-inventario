@@ -120,8 +120,12 @@ const InventoryPage = () => {
                     />
                   </td>
                   <td>
-                    <button onClick={handleSave}>Guardar</button>
-                    <button onClick={handleCancel}>Cancelar</button>
+                    <button className="save-button" onClick={handleSave}>
+                      Guardar
+                    </button>
+                    <button className="cancel-button" onClick={handleCancel}>
+                      Cancelar
+                    </button>
                   </td>
                 </>
               ) : (
@@ -131,7 +135,12 @@ const InventoryPage = () => {
                   <td>${item.precio_venta.toFixed(2)}</td>
                   <td>{item.fecha_vencimiento || "Sin fecha"}</td>
                   <td>
-                    <button onClick={() => handleEdit(idx)}>Editar</button>
+                    <button
+                      className="edit-button"
+                      onClick={() => handleEdit(idx)}
+                    >
+                      Editar
+                    </button>
                     <button
                       className="delete-button"
                       onClick={() => handleDelete(item.nombre_producto)}
