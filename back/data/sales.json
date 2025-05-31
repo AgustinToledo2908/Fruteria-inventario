@@ -140,5 +140,16 @@
         "precio_total": 22.5
       }
     ]
+  },
+  {
+    "nombre_cliente": "TOMAS",
+    "fecha_venta": "2026-05-04",
+    "detalles": [
+      {
+        "nombre_producto": "zapallo",
+        "cantidad_vendida": 1,
+        "precio_total": 150
+      }
+    ]
   }
 ]

@@ -1,5 +1,5 @@
 const path = require("path");
-const { readFile, writeFile } = require("./fileUtils");
+const { readFile, writeFile } = require("../utils/fileUtils");
 
 const inventoryFile = path.join(__dirname, "../data/inventory.json");
 const salesFile = path.join(__dirname, "../data/sales.json");

@@ -12,15 +12,15 @@
     "fecha_vencimiento": "2024-10-15"
   },
   {
-    "nombre_producto": "Kiwi",
-    "cantidad_stock": 1,
-    "precio_venta": 2.5,
-    "fecha_vencimiento": "2025-08-29"
-  },
-  {
     "nombre_producto": "pepino",
     "cantidad_stock": 4,
     "precio_venta": 55,
     "fecha_vencimiento": "2025-10-25"
+  },
+  {
+    "nombre_producto": "zapallo",
+    "cantidad_stock": 4,
+    "precio_venta": 150,
+    "fecha_vencimiento": "2026-11-27"
   }
 ]

@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { generateCSV } = require("../utils/exportHelpers");
-
+const { formatearMoneda } = require("../utils/formatearModena");
 const salesPath = path.join(__dirname, "../data/sales.json");
 const inventoryPath = path.join(__dirname, "../data/inventory.json");
 
@@ -164,7 +164,13 @@ function exportLowStockProduct(req, res) {
 }
 
 function exportSalesSummary(req, res) {
-  const data = salesSummary(req.query.period);
+  const data = Object.entries(salesSummary(req.query.period)).map(
+    ([fecha, datos]) => ({
+      fecha,
+      cantidad_de_ventas: datos.totalVentas,
+      ingresos: formatearMoneda(datos.totalIngreso),
+    })
+  );
   console.log(data);
   const columns = ["fecha", "cantidad_de_ventas", "ingresos"];
 

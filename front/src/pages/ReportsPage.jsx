@@ -135,7 +135,7 @@ const ReportsPage = () => {
           <ul>
             {lowStock.map((prod, i) => (
               <li key={i}>
-                {prod.nombre_producto} - Stock: {prod.cantidad_stock}
+                {prod.nombre_producto} - Stock: {prod.cantidad}
               </li>
             ))}
           </ul>

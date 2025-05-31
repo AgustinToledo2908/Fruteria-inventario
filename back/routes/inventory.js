@@ -11,7 +11,7 @@ const {
 
 const inventoryPath = path.join(__dirname, "../data/inventory.json");
 
-const { readFile } = require("../controllers/fileUtils");
+const { readFile } = require("../utils/fileUtils");
 
 router.get("/", (req, res) => {
   try {
