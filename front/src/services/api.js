@@ -25,3 +25,5 @@ export const exportTopProducts = (format = "csv") =>
   axios.get(`${API_URL}/reports/export-top-products?format=${format}`, {
     responseType: "blob",
   });
+export const exportLowStock = () =>
+  axios.get(`${API_URL}/reports/export-low-stock`, { responseType: "blob" });

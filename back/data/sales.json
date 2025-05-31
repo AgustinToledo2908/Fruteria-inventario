@@ -129,5 +129,16 @@
         "precio_total": 7.5
       }
     ]
+  },
+  {
+    "nombre_cliente": "DAMIAN",
+    "fecha_venta": "2025-05-31",
+    "detalles": [
+      {
+        "nombre_producto": "Kiwi",
+        "cantidad_vendida": 9,
+        "precio_total": 22.5
+      }
+    ]
   }
 ]

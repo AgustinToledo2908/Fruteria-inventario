@@ -5,8 +5,13 @@ import {
   getLowStock,
   getTotalIncome,
   exportTopProducts,
+  exportLowStock,
 } from "../services/api";
 import "./ReportsPage.css";
+
+const TOP_PRODUCTS = "TOP_PRODUCTS";
+const LOW_STOCK_PRODUCTS = "LOW_STOCK_PRODUCTS";
+const SALES_SUMMARY = "SALES_SUMMARY";
 
 const ReportsPage = () => {
   const [period, setPeriod] = useState("day");
@@ -41,13 +46,25 @@ const ReportsPage = () => {
     }
   };
 
-  const handleExport = async () => {
+  const handleExport = async (type) => {
+    let promise;
+    let filename;
+
+    if (type === TOP_PRODUCTS) {
+      promise = exportTopProducts();
+      filename = "top_productos.csv";
+    }
+
+    if (type === LOW_STOCK_PRODUCTS) {
+      promise = exportLowStock();
+      filename = "productos_stock_bajo.csv";
+    }
     try {
-      const res = await exportTopProducts("csv");
+      const res = await promise;
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "top_productos.csv");
+      link.setAttribute("download", filename);
       document.body.appendChild(link);
       link.click();
     } catch (err) {
@@ -81,6 +98,12 @@ const ReportsPage = () => {
               </li>
             ))}
           </ul>
+          <button
+            className="export-button"
+            onClick={() => handleExport(SALES_SUMMARY)}
+          >
+            Exportar CSV
+          </button>
         </div>
 
         <div className="report-card">
@@ -93,7 +116,10 @@ const ReportsPage = () => {
               </li>
             ))}
           </ul>
-          <button className="export-button" onClick={handleExport}>
+          <button
+            className="export-button"
+            onClick={() => handleExport(TOP_PRODUCTS)}
+          >
             Exportar CSV
           </button>
         </div>
@@ -107,6 +133,12 @@ const ReportsPage = () => {
               </li>
             ))}
           </ul>
+          <button
+            className="export-button"
+            onClick={() => handleExport(LOW_STOCK_PRODUCTS)}
+          >
+            Exportar CSV
+          </button>
         </div>
 
         <div className="total-ingresos-card">
