@@ -1,150 +1,124 @@
-🍎 Frutería - Sistema de Gestión
-Este proyecto es una aplicación completa (frontend + backend) para gestionar el inventario, las ventas y los reportes de una frutería. Permite registrar productos, registrar ventas, controlar el stock y generar reportes detallados en CSV y PDF.
+# 🍎 Frutería Inventario
 
-📁 Estructura del Proyecto
+Sistema completo de gestión de inventario y ventas para una frutería. Permite ingresar productos, registrar ventas, controlar el stock y generar reportes detallados en formatos CSV.
+
+---
+
+## 📦 Tecnologías Utilizadas
+
+### 🧠 Backend
+- Node.js
+- Express
+- File System (`fs`) para persistencia en archivos `.json`
+- Middleware personalizado
+
+
+### 💻 Frontend
+- React
+- Vite
+- React Router DOM
+- Axios para peticiones HTTP
+- Css
+
+---
+
+## 📁 Estructura del Proyecto
 
 Fruteria-inventario/
-├── backend/
-│   ├── controllers/
-│   ├── data/
-│   │   ├── inventory.json
-│   │   └── sales.json
-│   ├── routes/
-│   ├── utils/
-│   │   └── exportHelpers.js
-│   ├── index.js
-│   └── tests/
-│       ├── inventoryController.test.js
-│       └── reportController.test.js
-├── front/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.jsx
-│   ├── public/
-│   └── vite.config.js
+├── back/ # Backend (API REST)
+│ ├── controllers/ # Lógica de productos, ventas y reportes
+│ ├── data/ # Archivos JSON de productos y ventas
+│ ├── routes/ # Endpoints para interactuar con el sistema
+│ ├── utils/ # Helpers para lectura, escritura y reportes
+│ ├── tests/ # Pruebas unitarias con Jest
+│ └── index.js # Punto de entrada del servidor
+│
+├── front/ # Frontend (React)
+│ ├── src/
+│ │ ├── components/ # Componentes reutilizables
+│ │ ├── pages/ # Páginas principales: Agregar, Ventas, Reportes
+│ │ ├── services/ # Peticiones HTTP usando Axios
+│ │ ├── App.jsx # Definición de rutas
+│ │ └── main.jsx # Punto de entrada
+│ └── vite.config.js
+│
 └── README.md
-🚀 Cómo Ejecutar el Proyecto
-🔧 Requisitos Previos
-Node.js (v18 o superior)
 
-npm o yarn
-
-📦 Instalación
-1. Clonar el repositorio
-bash
+yaml
 Copiar
+Editar
+
+---
+
+## ⚙️ Instalación y Ejecución
+
+### 🔁 Clonar el Repositorio
+
+```bash
 git clone https://github.com/AgustinToledo2908/Fruteria-inventario.git
 cd Fruteria-inventario
-2. Iniciar el Backend
+🚀 Ejecutar el Backend
 bash
 Copiar
-cd backend
+Editar
+cd back
 npm install
 npm start
-El backend se ejecuta en http://localhost:3001.
+El backend se ejecuta en: http://localhost:3001
 
-3. Iniciar el Frontend
+💻 Ejecutar el Frontend
 bash
 Copiar
-cd ../front
+Editar
+cd front
 npm install
 npm run dev
-El frontend se ejecuta en http://localhost:5173.
+El frontend se ejecuta en: http://localhost:5173
 
-🧩 Funcionalidades
-✅ Inventario
-Alta de productos con:
+🌐 Rutas del Frontend
+Ruta	Funcionalidad
+/	Visualización del inventario actual
+/agregar	Formulario para agregar nuevos productos
+/ventas	Registro de ventas y actualización de stock
+/reportes	Visualización de reportes de ventas e ingresos
 
-Nombre
+📌 Funcionalidades
+Inventario
+Registro de productos con nombre, cantidad, precio y vencimiento opcional
 
-Cantidad en stock
+Persistencia en productos.json
 
-Precio por unidad
+Control de stock actualizado dinámicamente
 
-Fecha de vencimiento (opcional)
+Ventas
+Registro de ventas con cliente, productos, cantidad y precio total
 
-Modificación y eliminación de productos
+Descuento automático del stock
 
-Visualización del inventario en tabla estilo hoja de cálculo
 
-✅ Ventas
-Registro de ventas con:
 
-Nombre del cliente
-
-Fecha de venta
-
-Producto, cantidad y precio total
-
-Actualización automática del stock
-
-Validación de disponibilidad en inventario
-
-✅ Reportes
-Ventas por día, semana o mes
+Reportes
 
 Productos más vendidos
 
 Productos con bajo stock
 
-Ingresos totales
+Exportación desde backend en formatos CSV 
 
-Exportación de reportes a formato CSV
+✅ Estado del Proyecto
+ Backend funcional con todas las rutas
 
-🛠️ Tecnologías Utilizadas
-Frontend: React + Vite, CSS (Grid, Flexbox)
+ Frontend operativo con navegación por rutas
 
-Backend: Node.js, Express
+ Persistencia en archivos .json
 
-Persistencia: Archivos JSON (inventory.json, sales.json)
+ Validaciones de stock
 
-Exportación: CSV y PDF
+ Pruebas unitarias con Jest
 
-Test: Jest + Supertest
-
-📄 API RESTful
-📦 Inventario
-GET /api/inventory — Obtener todos los productos
-
-POST /api/inventory — Agregar un nuevo producto
-
-PUT /api/inventory/:nombre_producto — Editar producto
-
-DELETE /api/inventory/:nombre_producto — Eliminar producto
-
-💰 Ventas
-POST /api/inventory/sales — Registrar una venta
-
-📊 Reportes
-GET /api/reports/sales-summary?period=day|week|month
-
-GET /api/reports/top-products?top=5
-
-GET /api/reports/low-stock?threshold=5
-
-GET /api/reports/total-income
-
-GET /api/reports/export-top-products?format=csv|pdf
-
-🎯 Pruebas
-El backend cuenta con pruebas unitarias para los controladores de inventario y reportes.
-
-bash
-Copiar
-cd backend
-npm test 
-
-
-
-
-
-👨‍💻 Autor
-
+🧑‍💻 Autor
 Agustín Toledo
 Full Stack Developer
-
 📧 agustintoledo2908@gmail.com
 
  
