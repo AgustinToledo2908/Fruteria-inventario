@@ -120,7 +120,12 @@ function topSellingProducts(topN = 5) {
 
 function lowStockProducts(threshold = 5) {
   const inventory = readInventory();
-  return inventory.filter((item) => item.cantidad_stock <= threshold);
+  const products = inventory.filter((item) => item.cantidad_stock <= threshold);
+
+  return products.map((item) => ({
+    nombre_producto: item.nombre_producto,
+    cantidad: item.cantidad_stock,
+  }));
 }
 
 function totalIncome() {
@@ -145,9 +150,8 @@ function exportTopProducts(req, res) {
   res.send(csv);
 }
 
-function exportLowStockProduct(res) {
-  const data = lowStockProducts(10);
-  console.log(data);
+function exportLowStockProduct(req, res) {
+  const data = lowStockProducts(5);
   const columns = ["nombre_producto", "cantidad"];
 
   const csv = generateCSV(data, columns);
@@ -158,6 +162,7 @@ function exportLowStockProduct(res) {
   res.setHeader("Content-Type", "text/csv");
   res.send(csv);
 }
+
 module.exports = {
   salesSummary,
   topSellingProducts,
