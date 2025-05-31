@@ -1,35 +1,19 @@
 function generateCSV(data, columns) {
-  const header = columns.join(",") + "\n";
+  const delimiter = ";";
+
+  const escapeValue = (value) => {
+    const stringValue = value != null ? String(value) : "";
+    const escaped = stringValue.replace(/"/g, '""'); // Escape comillas dobles
+    return `"${escaped}"`; // Encerrar en comillas siempre
+  };
+
+  const header = columns.map(escapeValue).join(delimiter);
   const rows = data
-    .map((row) => columns.map((col) => `"${row[col]}"`).join(","))
+    .map((row) => columns.map((col) => escapeValue(row[col])).join(delimiter))
     .join("\n");
 
-  return header + rows;
-}
-const PDFDocument = require("pdfkit");
-
-function generatePDF(data, columns, res) {
-  const doc = new PDFDocument({ margin: 30, size: "A4" });
-
-  doc.pipe(res);
-
-  doc.fontSize(18).text("Reporte de productos", { align: "center" });
-  doc.moveDown();
-
-  columns.forEach((col, i) => {
-    doc.fontSize(12).text(col, { continued: i !== columns.length - 1 });
-  });
-  doc.moveDown();
-
-  data.forEach((row) => {
-    columns.forEach((col, i) => {
-      const text = row[col] !== undefined ? row[col].toString() : "";
-      doc.fontSize(10).text(text, { continued: i !== columns.length - 1 });
-    });
-    doc.moveDown();
-  });
-
-  doc.end();
+  const bom = "\uFEFF";
+  return bom + header + "\n" + rows;
 }
 
-module.exports = { generateCSV, generatePDF };
+module.exports = { generateCSV };
