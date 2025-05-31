@@ -6,6 +6,7 @@ import {
   getTotalIncome,
   exportTopProducts,
   exportLowStock,
+  exportSalesSummary,
 } from "../services/api";
 import "./ReportsPage.css";
 
@@ -59,6 +60,11 @@ const ReportsPage = () => {
       promise = exportLowStock();
       filename = "productos_stock_bajo.csv";
     }
+    if (type === SALES_SUMMARY) {
+      promise = exportSalesSummary(period);
+      filename = "sales_summary.csv";
+    }
+
     try {
       const res = await promise;
       const url = window.URL.createObjectURL(new Blob([res.data]));

@@ -8,6 +8,7 @@ const {
   totalIncome,
   exportTopProducts,
   exportLowStockProduct,
+  exportSalesSummary,
 } = require("../controllers/reportController");
 
 router.get("/sales-summary", (req, res) => {
@@ -40,5 +41,6 @@ router.get("/total-income", (req, res) => {
 
 router.get("/export-top-products", exportTopProducts);
 router.get("/export-low-stock", exportLowStockProduct);
+router.get("/export-sales-summary", exportSalesSummary);
 
 module.exports = router;

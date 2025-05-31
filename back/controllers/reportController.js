@@ -163,6 +163,20 @@ function exportLowStockProduct(req, res) {
   res.send(csv);
 }
 
+function exportSalesSummary(req, res) {
+  const data = salesSummary(req.query.period);
+  console.log(data);
+  const columns = ["fecha", "cantidad_de_ventas", "ingresos"];
+
+  const csv = generateCSV(data, columns);
+  res.setHeader(
+    "Content-Disposition",
+    "attachment; filename=sales-summary.csv"
+  );
+  res.setHeader("Content-Type", "text/csv");
+  res.send(csv);
+}
+
 module.exports = {
   salesSummary,
   topSellingProducts,
@@ -170,4 +184,5 @@ module.exports = {
   totalIncome,
   exportTopProducts,
   exportLowStockProduct,
+  exportSalesSummary,
 };
